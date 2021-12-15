@@ -4,27 +4,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "tbAcolhido")
+@Entity
+@Table(name = "tbAcolhido")
 public class Acolhido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String nome;
-    Date dataNascimento;
+    Instant dataNascimento;
     String cpf;
     String descricaoDoCaso;
     String Naturalidade;
-    // relacionamento N:N com medicação
     Boolean isActive;
 
+    // relacionamento N:N com medicação
+    @OneToMany(mappedBy = "paciente")
+    List<Receituario> medicamentos;
 }

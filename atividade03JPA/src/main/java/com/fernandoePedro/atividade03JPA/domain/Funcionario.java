@@ -2,26 +2,30 @@ package com.fernandoePedro.atividade03JPA.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.Instant;
 import java.util.Date;
-
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "tbFuncionario")
+@Entity
+@Table(name = "tbFuncionario")
 public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+
+    @Column(nullable = false, length = 128)
     String nome;
-    Date dataNascimento;
+
+    Instant dataNascimento;
+
     String tipoFuncionario;
     Double salario;
     String cpf;
@@ -35,4 +39,6 @@ public class Funcionario {
     String estado;
     Boolean isActive;
 
+//    @OneToMany(mappedBy = "responsavel")
+//    List<Refeicao> refeicaoList;
 }

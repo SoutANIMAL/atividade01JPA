@@ -12,7 +12,7 @@
 	<artifactId>atividade03JPA</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>atividade03JPA</name>
-	<description>Projeto de DBF, atividade 03. Criacao do BD.</description>
+	<description>Implementação do projeto Casa de Acolhimento</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

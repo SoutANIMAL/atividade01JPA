@@ -5,26 +5,27 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalTime;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tbCirculacaoAcolhido")
-public class CirculacaoAcolhido {
+@Table(name = "tbReceituario")
+public class Receituario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    LocalTime horaSaida;
-    LocalTime horaEntrada;
-    String descricao;
-    Boolean isActive;
+    Integer dosagem;
 
     // relacionamento N:1 com acolhido
     @ManyToOne
-    Acolhido acolhido;
+    Acolhido paciente;
 
+    // relacionamento N:1 com medicação
+    @ManyToOne
+    Medicamento medicamento;
+
+    // Alessio disse que para diminuir a complexidade do trabalho seria melhor
+    // dividir a relação N:M em duas 1:N
 }
